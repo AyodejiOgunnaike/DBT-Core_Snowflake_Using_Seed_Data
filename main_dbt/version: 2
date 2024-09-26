@@ -1,0 +1,7 @@
+sources:
+  - name: raw
+    tables:
+      - name: customers
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 3, period: day}

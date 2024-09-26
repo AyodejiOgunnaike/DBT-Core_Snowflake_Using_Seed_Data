@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_customers  # This matches the 'stg_customers.sql' model name
+    description: "This is the staging model for customer data transformations"
+    columns:
+      - name: id
+        description: "Primary key for the customer data"
+      - name: name
+        description: "Full name of the customer"
+      - name: email
+        description: "email address of the customer"
+      - name: city
+        description: "Location for the customer"
+        
+      
+
+sources:
+  - name: raw  # The schema name
+    database: "{{ target.database }}"  # Referencing the Snowflake database
+    schema: data_schema  # This must be the schema where the 'customers' table is stored
+    tables:
+      - name: customers  # The table name in the raw schema
+        description: "This table contains raw customer data from the source"
